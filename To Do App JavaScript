@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App</title>
+</head>
+<body>
+
+<div>
+ <input type="text" id="txtName">
+
+</div>
+<div>
+    <ul id="task-list">
+
+    </ul>
+</div>
+<script>
+document.querySelector("#txtName").addEventListener('keyup',(e)=>{
+    if( e.key == "Enter" && e.target.value != "" ){
+        const value =  e.target.value;
+        const li = document.createElement('li');
+        li.innerText = value ;
+        document.querySelector("#task-list").append(li);
+
+        const ch = document.createElement('input');
+        ch.type = "checkbox";
+       
+        ch.addEventListener('change',(e)=>{
+            if(e.target.checked){
+                li.style.textDecoration = "line-through";
+            }
+            else{
+                li.style.textDecoration = "none" ;
+            }
+        })
+        const btn = document.createElement('button');
+        btn.innerText = "X";
+        btn.addEventListener('click',(e)=>{
+           li.remove();
+        })
+        li.append(ch,btn);
+    }
+   
+})
+
+
+</script>
+</body>
+</html>
